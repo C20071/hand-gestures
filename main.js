@@ -23,8 +23,7 @@ function modelLoaded(){
 function speak(){
     var synth = window.speechSynthesis;
     speak_data_1= "1st prediction ="+prediction_1;
-    speak_data_2= "2st prediction ="+prediction_2;
-    var utterThis= new SpeechSynthesisUtterance(speak_data_1+speak_data_2);
+    var utterThis= new SpeechSynthesisUtterance(speak_data_1);
     synth.speak(utterThis);
 
     
@@ -41,27 +40,24 @@ function gotResult(error, results){
     }else{
         console.log(result);
         document.getElementById("result_emotion_name").innerHTML=result[0].label;
-        document.getElementById("result_emotion_name").innerHTML=result[1].label;
         prediction_1=result[0].label;
-        prediction_2=result[1].label;
+        
         speak();
-        if (result[0].label=="happy") {
-            doucment.getElementById("update_emoji").innerHTML="&#128522"
+        if (result[0].label=="Clap") {
+            doucment.getElementById("update_emoji").innerHTML="&#128079;";
         }
-        if (result[0].label=="sad") {
-            doucment.getElementById("update_emoji").innerHTML="&#128532"
+        if (result[0].label=="Thumbs Up") {
+            doucment.getElementById("update_emoji").innerHTML="&#128077;";
         }
-        if (result[0].label=="angry") {
-            doucment.getElementById("update_emoji").innerHTML="&#128548"
+        if (result[0].label=="Peace") {
+            doucment.getElementById("update_emoji").innerHTML="&#9996;";
         }
-        if (result[1].label=="happy") {
-            doucment.getElementById("update_emoji").innerHTML="&#128522"
+        if (result[0].label=="Heart") {
+            doucment.getElementById("update_emoji").innerHTML="&#x2764;";
         }
-        if (result[1].label=="sad") {
-            doucment.getElementById("update_emoji").innerHTML="&#128532"
+        if (result[0].label=="Thumbs Down") {
+            doucment.getElementById("update_emoji").innerHTML="&#128078;";
         }
-        if (result[1].label=="angry") {
-            doucment.getElementById("update_emoji").innerHTML="&#128548"
-        }
+        
     }
 }
